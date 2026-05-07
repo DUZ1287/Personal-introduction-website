@@ -6,7 +6,7 @@
 [![GitHub license](https://img.shields.io/github/license/DUZ1287/DUZ1287.github.io)](LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/DUZ1287/DUZ1287.github.io)](https://github.com/DUZ1287/DUZ1287.github.io/commits/main)
 
-**在线访问**：👉 [https://duz1287.github.io](https://duz1287.github.io)
+**在线访问**：👉 [https://duz1287.github.io](https://duz1287.github.io/Personal-introduction-website/)
 
 ---
 
