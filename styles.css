@@ -1782,10 +1782,11 @@ body {
     .glitch-text {
         font-size: 1.6rem;
         margin-bottom: 0.8rem;
-        text-shadow: 
-            2px 2px 0 var(--rock-pink), 
+        text-shadow:
+            2px 2px 0 var(--rock-pink),
             4px 4px 0 rgba(0,0,0,0.15),
             0 0 20px rgba(255, 255, 255, 0.5);
+        animation: none;
     }
     
     .subtitle {
@@ -1820,6 +1821,7 @@ body {
         width: 100%;
         max-width: 200px;
         text-align: center;
+        animation: none;
     }
 
     .hero-image {
@@ -1869,6 +1871,11 @@ body {
     .cta-button {
         padding: 0.9rem 1.8rem;
         font-size: 0.95rem;
+        animation: none;
+    }
+
+    .cta-button::before {
+        display: none;
     }
 
     /* 区块标题进一步优化 */
@@ -1880,6 +1887,12 @@ body {
     /* 关于我区域进一步优化 */
     .about-section {
         padding: 3rem 0.8rem;
+        text-align: left;
+    }
+
+    .about-text p {
+        font-size: 0.95rem;
+        line-height: 1.85;
     }
     
     .about-text p {
@@ -1893,11 +1906,16 @@ body {
     
     .stat-item {
         min-width: 90px;
-        padding: 1rem 0.6rem;
+        flex: 1 1 100%;
+        padding: 0.9rem 0.6rem;
     }
-    
+
     .stat-number {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+    }
+
+    .stat-label {
+        font-size: 0.8rem;
     }
     
     .stat-label {
@@ -2027,19 +2045,26 @@ body {
 
 /* 超小屏幕手机 (360px 以下) */
 @media (max-width: 360px) {
+    .hero {
+        padding: 70px 0.6rem 30px;
+    }
+
     .glitch-text {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
     }
-    
+
     .subtitle {
-        font-size: 0.8rem;
+        font-size: 0.78rem;
+        margin-bottom: 0.8rem;
     }
-    
+
     .hero-image {
-        width: 100px;
-        height: 85px;
+        width: 90px;
+        height: 75px;
+        margin: 1rem auto;
     }
-    
+
     .character-body {
         width: 24px;
         height: 30px;
@@ -2101,6 +2126,43 @@ body {
     .project-info {
         padding: 1rem;
     }
+
+    .project-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .project-placeholder {
+        font-size: 3rem;
+    }
+
+    .project-meta-overlay {
+        gap: 4px;
+        bottom: 6px;
+        left: 6px;
+        right: 6px;
+    }
+
+    .repo-language,
+    .repo-stars,
+    .repo-updated,
+    .repo-forks {
+        padding: 3px 8px;
+        font-size: 0.6rem;
+    }
+
+    .desc-main {
+        font-size: 0.9rem;
+    }
+
+    .desc-details {
+        font-size: 0.78rem;
+        padding: 8px;
+    }
+
+    .tech-tags span {
+        padding: 3px 8px;
+        font-size: 0.72rem;
+    }
     
     .contact-method {
         padding: 0.8rem 1rem;
@@ -2145,47 +2207,73 @@ body {
         min-height: 44px;
         min-width: 44px;
     }
-    
+
     /* 移除悬停效果，改为点击效果 */
     .skill-card:hover,
     .project-card:hover,
     .note-card:hover,
     .contact-method:hover,
     .stat-item:hover,
-    .tech-tags span:hover {
+    .tech-tags span:hover,
+    .cta-button:hover,
+    .github-link:hover,
+    .social-link:hover,
+    .refresh-btn:hover {
         transform: none;
         box-shadow: inherit;
     }
-    
-    /* 触摸激活状态 */
-    .skill-card:active {
+
+    /* 禁用耗费性能的 CSS 动画 */
+    .glitch-text,
+    .section-title,
+    .stat-badge,
+    .badge-pulse,
+    .cta-button,
+    .github-link {
+        animation: none !important;
+    }
+
+    /* 降低角色动画帧率 */
+    .hero-image,
+    .character,
+    .flying-device,
+    .avatar {
+        animation-duration: 6s !important;
+    }
+
+    /* 移除背景脉冲动画 */
+    .hero::before,
+    .contact-section::before {
+        animation: none !important;
+    }
+
+    /* 触摸激活状态 - add touch feedback */
+    .skill-card:active,
+    .note-card:active,
+    .contact-method:active,
+    .stat-item:active {
         transform: scale(0.98);
+    }
+
+    .skill-card:active {
         box-shadow: 0 5px 20px rgba(212, 165, 165, 0.3);
     }
-    
+
     .project-card:active {
         transform: scale(0.98);
         box-shadow: 0 5px 20px rgba(0,0,0,0.15);
     }
-    
-    .note-card:active {
-        transform: scale(0.98);
+
+    .refresh-btn:active {
+        transform: scale(0.95);
     }
-    
-    .contact-method:active {
-        transform: scale(0.98);
-    }
-    
-    .stat-item:active {
-        transform: scale(0.98);
-    }
-    
+
     /* 导航链接触摸优化 */
     .nav-links a:active {
         background: rgba(212, 165, 165, 0.1);
         border-radius: 10px;
     }
-    
+
     /* 按钮触摸优化 */
     .cta-button:active,
     .github-link:active,
@@ -3078,12 +3166,61 @@ body.dark-mode {
     text-align: center;
 }
 
-/* ========== 11. 手动刷新 & 自动刷新指示器 ========== */
+/* ========== 12. 加载占位骨架屏样式 ========== */
+.loading-placeholder {
+    border-radius: 8px;
+    background: linear-gradient(90deg, #eee 25%, #f5f5f5 50%, #eee 75%);
+    background-size: 200% 100%;
+    animation: loadingShimmer 1.5s ease-in-out infinite;
+}
+
+[data-theme="dark"] .loading-placeholder {
+    background: linear-gradient(90deg, #2a2a2a 25%, #333 50%, #2a2a2a 75%);
+    background-size: 200% 100%;
+}
+
+@keyframes loadingShimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.loading-title {
+    height: 24px;
+    width: 60%;
+    margin-bottom: 1rem;
+}
+
+.loading-line {
+    height: 16px;
+    width: 90%;
+    margin-bottom: 0.5rem;
+}
+
+.loading-line-short {
+    width: 70%;
+    margin-bottom: 1.5rem;
+}
+
+.loading-tag {
+    height: 32px;
+    width: 200px;
+    border-radius: 16px;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .loading-title { height: 20px; width: 50%; }
+    .loading-line { height: 14px; }
+    .loading-tag { height: 28px; width: 160px; }
+}
+
+/* ========== 13. 刷新组 & 设置按钮移动端适配 ========== */
 .refresh-group {
     display: flex;
     align-items: center;
     gap: 12px;
     margin-top: 12px;
+    flex-wrap: wrap;
 }
 
 .refresh-btn {
@@ -3100,6 +3237,7 @@ body.dark-mode {
     align-items: center;
     gap: 6px;
     min-height: 44px;
+    white-space: nowrap;
 }
 
 [data-theme="dark"] .refresh-btn {
@@ -3123,57 +3261,74 @@ body.dark-mode {
     opacity: 0.6;
 }
 
-.refresh-btn.loading .refresh-icon {
-    animation: spin 0.8s linear infinite;
-}
-
 .auto-refresh-indicator {
     font-size: 0.8rem;
     color: #27ae60;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .auto-refresh-indicator.paused {
     color: #e74c3c;
 }
 
-/* 设置面板移动端适配 */
+@media (max-width: 480px) {
+    .refresh-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+
+/* ========== 14. 设置按钮 & 面板移动端适配 ========== */
 @media (max-width: 768px) {
+    .settings-toggle {
+        font-size: 1.2rem;
+        margin-left: 2px;
+        padding: 6px;
+        min-width: 40px;
+        min-height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
     .settings-panel {
-        padding: 1.8rem;
-        margin: 1rem;
+        padding: 1.4rem;
+        max-height: 90vh;
+        overflow-y: auto;
     }
 
     .settings-panel h3 {
-        font-size: 1.3rem;
+        font-size: 1.15rem;
+        margin-bottom: 0.8rem;
     }
 
-    .settings-actions {
-        flex-direction: column;
+    .settings-desc {
+        font-size: 0.85rem;
     }
 
+    .settings-info {
+        font-size: 0.8rem;
+        padding: 10px 12px;
+    }
+
+    .token-input-group input {
+        font-size: 0.85rem;
+        padding: 10px 12px;
+    }
+
+    .settings-btn-primary,
+    .settings-btn-secondary,
     .settings-btn-close {
-        margin-left: 0;
-    }
-
-    .settings-toggle {
-        font-size: 1.2rem;
-        margin-left: 4px;
+        padding: 10px 16px;
+        font-size: 0.9rem;
+        width: 100%;
+        justify-content: center;
+        text-align: center;
     }
 }
 
-/* 项目卡片 meta 区域的 fork 数样式 */
-.repo-forks {
-    background: rgba(0,0,0,0.7);
-    backdrop-filter: blur(10px);
-    color: white;
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    font-weight: 600;
-}
-
-/* ========== 12. 刷新动画（兼容已有的 spin） ========== */
+/* ========== 15. 刷新动画（兼容已有的 spin） ========== */
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
