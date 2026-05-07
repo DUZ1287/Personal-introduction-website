@@ -124,13 +124,23 @@
         </button>
         
         <!-- 暗色模式切换按钮 -->
-        <button 
-            class="theme-toggle" 
+        <button
+            class="theme-toggle"
             id="theme-toggle"
             aria-label="切换暗色模式"
             title="切换明/暗主题"
         >
             🌙
+        </button>
+
+        <!-- 设置按钮 -->
+        <button
+            class="settings-toggle"
+            id="settings-toggle"
+            aria-label="打开设置"
+            title="GitHub API 设置"
+        >
+            ⚙️
         </button>
     </nav>
 
@@ -243,6 +253,14 @@
                         <span class="status-indicator loading"></span>
                         正在从GitHub API加载数据...
                     </p>
+
+                    <!-- 手动刷新按钮组 -->
+                    <div class="refresh-group">
+                        <button class="refresh-btn" id="refresh-btn" type="button" title="手动刷新 GitHub 数据">
+                            🔄 手动刷新
+                        </button>
+                        <span class="auto-refresh-indicator" id="auto-refresh-indicator">⏰ 自动刷新已开启</span>
+                    </div>
                 </article>
                 
                 <aside class="about-visual">
@@ -341,108 +359,19 @@
             </p>
             
             <div class="projects-grid" id="projects-grid">
-                <!-- 项目卡片将通过JavaScript动态生成或增强 -->
-                
-                <article class="project-card project-1" data-repo="Yxy">
+                <!-- 项目卡片将由 GitHub API 数据动态生成 -->
+                <!-- 加载中的占位 -->
+                <div class="project-card project-loading" id="project-loading">
                     <div class="project-image">
-                        <div class="project-placeholder" aria-hidden="true">🎉</div>
-                        <!-- 动态数据占位 -->
-                        <div class="project-meta-overlay" id="meta-Yxy">
-                            <span class="repo-language" data-lang="HTML">● HTML</span>
-                            <span class="repo-stars" data-stars="">⭐ --</span>
-                            <span class="repo-updated" data-updated="">Updated: --</span>
-                        </div>
+                        <div class="project-placeholder" aria-hidden="true">⏳</div>
                     </div>
                     <div class="project-info">
-                        <h3>Yxy</h3>
-                        
-                        <!-- 升级后：价值导向描述 -->
-                        <div class="project-description">
-                            <p class="desc-main">Web开发实验场</p>
-                            <p class="desc-details">
-                                📌 <strong>内容覆盖：</strong> HTML5语义化标签、CSS3动画效果、响应式布局<br>
-                                🧠 <strong>学习产出：</strong> 交互式Demo页面、CSS动画组件库<br>
-                                💡 <strong>适用场景：</strong> 快速原型设计、前端技术验证
-                            </p>
-                        </div>
-                        
-                        <div class="tech-tags">
-                            <span>HTML5</span>
-                            <span>CSS3</span>
-                            <span>Animation</span>
-                            <span class="visibility-badge">Public</span>
-                        </div>
-                        <a href="https://github.com/DUZ1287/Yxy" target="_blank" rel="noopener noreferrer" class="project-link">
-                            查看源码 <span aria-hidden="true">→</span>
-                        </a>
+                        <div class="loading-placeholder" style="height:24px;width:60%;background:#eee;border-radius:8px;margin-bottom:1rem;"></div>
+                        <div class="loading-placeholder" style="height:16px;width:90%;background:#eee;border-radius:6px;margin-bottom:0.5rem;"></div>
+                        <div class="loading-placeholder" style="height:16px;width:70%;background:#eee;border-radius:6px;margin-bottom:1.5rem;"></div>
+                        <div class="loading-placeholder" style="height:32px;width:200px;background:#eee;border-radius:16px;"></div>
                     </div>
-                </article>
-                
-                <article class="project-card project-2" data-repo="Operating-System">
-                    <div class="project-image">
-                        <div class="project-placeholder" aria-hidden="true">💻</div>
-                        <div class="project-meta-overlay" id="meta-Operating-System">
-                            <span class="repo-language" data-lang="Markdown">● Markdown</span>
-                            <span class="repo-stars" data-stars="">⭐ --</span>
-                            <span class="repo-updated" data-updated="">Updated: --</span>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Operating-System</h3>
-                        
-                        <div class="project-description">
-                            <p class="desc-main">操作系统原理知识图谱</p>
-                            <p class="desc-details">
-                                📌 <strong>内容覆盖：</strong> 进程调度算法（FCFS/RR/Priority）、内存分页机制、虚拟内存、文件系统结构<br>
-                                🧠 <strong>学习产出：</strong> 结构化笔记、概念对比表、面试复习清单<br>
-                                💡 <strong>适用场景：</strong> 课程复习、考研准备、面试突击
-                            </p>
-                        </div>
-                        
-                        <div class="tech-tags">
-                            <span>操作系统</span>
-                            <span>进程管理</span>
-                            <span>内存管理</span>
-                            <span class="visibility-badge">Public</span>
-                        </div>
-                        <a href="https://github.com/DUZ1287/Operating-System" target="_blank" rel="noopener noreferrer" class="project-link">
-                            查看源码 <span aria-hidden="true">→</span>
-                        </a>
-                    </div>
-                </article>
-                
-                <article class="project-card project-3" data-repo="Principles-of-Database">
-                    <div class="project-image">
-                        <div class="project-placeholder" aria-hidden="true">🗄️</div>
-                        <div class="project-meta-overlay" id="meta-Principles-of-Database">
-                            <span class="repo-language" data-lang="Markdown">● Markdown</span>
-                            <span class="repo-stars" data-stars="">⭐ --</span>
-                            <span class="repo-updated" data-updated="">Updated: --</span>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3>Principles-of-Database</h3>
-                        
-                        <div class="project-description">
-                            <p class="desc-main">数据库系统原理精要</p>
-                            <p class="desc-details">
-                                📌 <strong>内容覆盖：</strong> 关系代数、SQL进阶查询、事务ACID特性、索引B+树实现、规范化理论<br>
-                                🧠 <strong>学习产出：</strong> SQL实战案例、性能优化技巧、ER图设计范例<br>
-                                💡 <strong>适用场景：</strong> 数据库课程学习、后端开发基础、SQL面试准备
-                            </p>
-                        </div>
-                        
-                        <div class="tech-tags">
-                            <span>数据库</span>
-                            <span>SQL</span>
-                            <span>事务处理</span>
-                            <span class="visibility-badge">Public</span>
-                        </div>
-                        <a href="https://github.com/DUZ1287/Principles-of-Database" target="_blank" rel="noopener noreferrer" class="project-link">
-                            查看源码 <span aria-hidden="true">→</span>
-                        </a>
-                    </div>
-                </article>
+                </div>
             </div>
         </section>
 
@@ -528,6 +457,49 @@
             <span aria-hidden="true">🏜️</span>
         </nav>
     </footer>
+
+    <!-- 设置面板 -->
+    <div class="settings-overlay" id="settings-overlay">
+        <div class="settings-panel" role="dialog" aria-label="GitHub API 设置" aria-modal="true">
+            <h3>⚙️ GitHub API 实时数据设置</h3>
+            <p class="settings-desc">
+                配置 GitHub Personal Access Token 可提升 API 限流至 <strong>5000次/小时</strong>（默认仅 60次/小时）。
+                Token 仅存储在浏览器本地，不会上传到任何服务器。
+            </p>
+            <div class="settings-info">
+                <span class="settings-info-icon">💡</span>
+                <span>如何获取：</span>
+                <a href="https://github.com/settings/tokens?description=Personal-Website&scopes=repo:public_repo" target="_blank" rel="noopener noreferrer" class="settings-link">
+                    一键创建 Token →
+                </a>
+                <span>（不需要勾选任何权限，直接生成即可）</span>
+            </div>
+            <div class="settings-form">
+                <label for="github-token-input">GitHub Token</label>
+                <div class="token-input-group">
+                    <input
+                        type="password"
+                        id="github-token-input"
+                        placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
+                        autocomplete="off"
+                        spellcheck="false"
+                    />
+                    <button class="token-visibility-toggle" id="token-visibility-toggle" type="button" aria-label="切换Token可见性">
+                        👁️
+                    </button>
+                </div>
+                <span class="token-status" id="token-status"></span>
+            </div>
+            <div class="settings-actions">
+                <button id="token-save-btn" class="settings-btn-primary">保存并刷新</button>
+                <button id="token-clear-btn" class="settings-btn-secondary">清除 Token</button>
+                <button id="settings-close-btn" class="settings-btn-close">关闭</button>
+            </div>
+            <p class="settings-footer">
+                🔒 Token 仅保存在你浏览器的 localStorage 中，仅在调用 GitHub API 时使用。
+            </p>
+        </div>
+    </div>
 
     <!-- JavaScript -->
     <script src="script.js"></script>
