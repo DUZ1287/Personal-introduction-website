@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ' *)",
+      "PowerShell(Get-Item \"d:\\\\VSCode\\\\个人介绍网站\\\\styles.css\", \"d:\\\\VSCode\\\\个人介绍网站\\\\script.js\", \"d:\\\\VSCode\\\\个人介绍网站\\\\index.html\" | Select-Object Name, @{n=\"Size\\(KB\\)\";e={[math]::Round\\($_.Length/1KB, 1\\)}})"
+    ]
+  }
+}
